@@ -1,0 +1,34 @@
+[
+  {
+    "test": [
+      ".*.js"
+    ],
+    "jsc": {
+      "target": "es2019",
+      "parser": {
+        "classProperty": true,
+        "dynamicImport": true,
+        "syntax": "ecmascript",
+        "decorators": true,
+        "decoratorsBeforeExport": true
+      }
+    },
+    "module": {
+      "type": "commonjs"
+    }
+  },
+  {
+    "test": [
+      ".*.ts"
+    ],
+    "jsc": {
+      "target": "es2020",
+      "parser": {
+        "syntax": "typescript"
+      }
+    },
+    "module": {
+      "type": "commonjs"
+    }
+  }
+]

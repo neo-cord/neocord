@@ -1,53 +1,44 @@
-<img align="center" src="https://repository-images.githubusercontent.com/291619880/8b583d80-eb6d-11ea-8300-3206ef4d5136" />
-
 ---
 
-> NeoCord is currently in alpha, meaning it will probably be broken and might not work.
-  If you want to contribute, please join our [support server](https://discord.gg/5WD9KhF) - It would be greatly appreciated.
+> neocord is currently in alpha, meaning it will probably be broken. If you want to contribute, please join our [support server]() - it would be greatly appreciated.
 
 ###### Table of Contents
 
 - [about](#about)
 - [installation](#installation)
-    - [optional packages](#option-packages)
-    - [basic usage](#basic-usage) 
+    - [optional packages](#optional-packages)
+    - [example usage](#example-usage)
 
-<h2 align="center">About</h2>
+## About
 
-Neocord is a powerful and feature-rich discord library.
+Neocord is a powerful and feature-rich discord library made for nodejs.
 
-- **Flexible**: Gives you the ability to extend specific structures, customize caching to your needs.
-- **Coverage**: Covers the Discord Gateway, API, CDN, and in the near future, Voice.
-- **Caching**: Boasts the most powerful and flexible caching solution across most discord libraries.
+- **Coverage**: Implementations for the Gateway, API, and CDN are present. Voice will come in the near future.
+- **Caching**: Boasts the most flexible and powerful caching solution across all nodejs discord libraries.
 
 ## Installation
 
-As of **09/04/2020** (month/day/year), NeoCord can only be used with node.js v12 and up.
+As of 09/04/2020 (month/day/year), NeoCord can only be used with node.js v12 and up.
 
-```shell script
-yarn add neocord
+```bash
+> yarn add neocord
 ```
 
-##### Optional Packages
+###### Optional Packages
 
-These are some optional packages you can install.
-
-- Install **zlib-sync** or **pako** for data compression and inflation 
-    > - **[zlib-sync](https://npmjs.com/zlib-sync/)**    
-    > - **[pako](https://npmjs.com/pako/)**
-    > - or the native **zlib** module (no installation)
-
-
-- **[erlpack](https://npmjs.com/erlpack)** for significantly faster websocket (de)serialization. 
+- **[form-data](https://npmjs.com/form-data)** if you plan on sending files.
+- Install **zlib-sync** or **pako** for data compression and inflation
+    - **[zlib-sync](https://npmjs.com/zlib-sync/)**
+    - **[pako](https://npmjs.com/pako/)**
+    - or the native **zlib** module (no installation)
+- **[erlpack](https://npmjs.com/erlpack)** for significantly faster websocket (de)serialization.
 - **[bufferutil](https://npmjs.com/bufferutil)** for a much faster websocket connection.
-    > And **[utf-8-validate](https://npmjs.com/utf-8-validate)** for faster websocket processing.
+    - And **[utf-8-validate](https://npmjs.com/utf-8-validate)** for faster websocket processing.
 
+###### Example Usage
 
-##### Basic Usage
-
-`(typescript)` 
 ```ts
-import { Client } from "neocord";
+const { Client } = require("neocord/core");
 
 const client = new Client();
 
@@ -63,10 +54,10 @@ client
     else {
       const mentioned = mentionPrefix.exec(message.content);
       if (!mentioned) return;
-      prefix = mentioned[0]; 
+      prefix = mentioned[0];
     }
-    
-    const [cmd] = message.content.slice(prefix.length).split(/ /g);
+
+    const [ cmd ] = message.content.slice(prefix.length).split(/ /g);
     if (cmd.toLowerCase() === "ping") {
       message.channel.send("**Pong!**");
     }
@@ -74,8 +65,13 @@ client
     return;
   });
 
-
 client.connect("your token here"); 
+```
+
+For ES6, you just have to change the imports to:
+
+```ts
+import { Client } from "neocord/core"
 ```
 
 ## Links
@@ -84,6 +80,8 @@ client.connect("your token here");
 - **Github**: <https://github.com/neo-cord/neocord>
 - **NPM**: <https://npmjs.com/neocord/>
 
----
+## Acknowledgements
 
-<p align="center"><a href="https://github.com/melike2d">melike2d</a> &copy; 2020</p>
+- Big thanks to [TheAkio](https://github.com/theakio), the gateway implementation was inspired by TypeCord, one of their
+  projects.
+- Thanks to [TeamKKB](https://teamkkb.xyz/) for dedicating some of their development team to get neocord done faster.
